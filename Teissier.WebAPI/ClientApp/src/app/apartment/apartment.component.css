@@ -1,0 +1,15 @@
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+table {
+    width: 100%;
+}
+
+tr.mat-footer-row {
+    font-weight: bold;
+}
+
+.mat-column-actions {
+    max-width: 10px;
+}

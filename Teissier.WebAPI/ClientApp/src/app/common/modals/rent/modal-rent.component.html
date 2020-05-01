@@ -1,0 +1,18 @@
+<form class="example-container" [formGroup]="rentForm" (ngSubmit)="onSubmit()">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Montant</mat-label>
+            <input matInput formControlName="amount" required />
+        </mat-form-field>
+    </div>
+    <div>
+        <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!rentForm.valid"
+        >
+            Submit
+        </button>
+    </div>
+</form>

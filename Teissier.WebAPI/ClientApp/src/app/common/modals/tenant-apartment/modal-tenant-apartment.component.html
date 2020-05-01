@@ -1,0 +1,94 @@
+<form
+    class="example-container"
+    [formGroup]="tenantApartmentForm"
+    (ngSubmit)="onSubmit()"
+>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-select
+                formControlName="tenantId"
+                placeholder="Locataire"
+                required
+            >
+                <mat-option
+                    *ngFor="let tenant of tenants"
+                    [value]="tenant.id"
+                    [disabled]="!tenant.canBeRemoved"
+                >
+                    {{ tenant.firstname + ' ' + tenant.lastname }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-select
+                formControlName="apartmentId"
+                placeholder="Appartement"
+                required
+            >
+                <mat-option
+                    *ngFor="let apartment of apartments"
+                    [value]="apartment.id"
+                    [disabled]="!apartment.canBeRemoved"
+                >
+                    {{ apartment.level + ' ' + apartment.description }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Date d'entrée</mat-label>
+            <input
+                matInput
+                [matDatepicker]="picker2"
+                formControlName="dateIn"
+                required
+            />
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Date de sortie</mat-label>
+            <input
+                matInput
+                [matDatepicker]="picker1"
+                formControlName="dateOut"
+            />
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="picker1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Méthode de paiement</mat-label>
+            <input matInput formControlName="paymentMethod" required />
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Loyer</mat-label>
+            <input matInput formControlName="rent" required />
+            <mat-icon matSuffix>euro</mat-icon>
+        </mat-form-field>
+    </div>
+    <div>
+        <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!tenantApartmentForm.valid"
+        >
+            Submit
+        </button>
+    </div>
+</form>

@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <span>Bienvenue, {{ currentUser }}</span>
+    <span class="example-fill-remaining-space"></span>
+    <button mat-button [routerLink]="['/']">Locations</button>
+    <button mat-button [routerLink]="['/tenants']">Locataires</button>
+    <button mat-button [routerLink]="['/apartments']">Appartements</button>
+    <span class="example-fill-remaining-space"></span>
+    <button mat-button [routerLink]="['/login']">Déconnexion</button>
+</mat-toolbar>

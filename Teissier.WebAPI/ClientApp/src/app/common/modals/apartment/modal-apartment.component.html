@@ -1,0 +1,28 @@
+<form
+    class="example-container"
+    [formGroup]="apartmentForm"
+    (ngSubmit)="onSubmit()"
+>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" required />
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Niveau</mat-label>
+            <input matInput formControlName="level" required />
+        </mat-form-field>
+    </div>
+    <div>
+        <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!apartmentForm.valid"
+        >
+            Submit
+        </button>
+    </div>
+</form>

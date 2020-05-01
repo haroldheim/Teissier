@@ -1,0 +1,46 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let record">
+            {{ this.datepipe.transform(record.date, 'dd/MM/yyyy') }}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>Total</td>
+    </ng-container>
+    <ng-container matColumnDef="label">
+        <th mat-header-cell *matHeaderCellDef>Libellé</th>
+        <td mat-cell *matCellDef="let record">
+            {{ record.label }}
+        </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="debit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Débit</th>
+        <td mat-cell *matCellDef="let record">
+            {{ record.debit | currency: 'EUR' }}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+            {{ getTotalDebit() | currency: 'EUR' }}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="credit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Crédit</th>
+        <td mat-cell *matCellDef="let record">
+            {{ record.credit | currency: 'EUR' }}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+            {{ getTotalCredit() | currency: 'EUR' }}
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
+        <td mat-cell *matCellDef="let record">
+            {{ record.total | currency: 'EUR' }}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+            {{ getTotalCredit() - getTotalDebit() | currency: 'EUR' }}
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+</table>
